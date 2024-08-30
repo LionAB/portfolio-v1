@@ -15,9 +15,9 @@ export default function HeroSection() {
       <TypewriterEffectDemo/>
   
      </div>
-     <div className=" sm:mt-10 md:w-fit flex items-center justify-center md:justify-end order-1 md:order-2">
+     <div className=" sm:mt-10 md:w-fit flex items-center justify-center md:justify-end order-1 md:order-2 md:align-top " >
         <Image
-          className=" rounded-full ring-2 ring-gray-300 dark:ring-gray-500 shadow-xl dark:shadow-gray-800"
+          className=" rounded-full ring-2 ring-gray-300 dark:ring-gray-500 shadow-xl dark:shadow-gray-800 md:align-top"
           src="/me2.jpg"
           alt="Photo de Lionel Abatan"
           width={250}

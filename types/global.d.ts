@@ -11,7 +11,7 @@ declare global {
         type: string;
         title: string;
         description: string;
-        year: number;
+        year: string;
         tech: ITech[];
         
     }

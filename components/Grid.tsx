@@ -12,29 +12,61 @@ import { BentoCard, BentoGrid2 } from "@/components/magicui/BentoGrid2";
 import Marquee from "@/components/magicui/marquee";
 import { CalendarIcon, FileTextIcon, InputIcon,LaptopIcon } from "@radix-ui/react-icons";
 import { Share2Icon } from "lucide-react";
-import { useEffect } from "react";
+import { useEffect,useState } from "react";
+import { addDays } from "date-fns";
+ import { fr } from "date-fns/locale";
+import { Content } from "@radix-ui/react-select";
+const date =({ from: new Date(2024, 9, 1, 0, 0, 0), // Date de début initiale
+  to: addDays(new Date(2025, 10, 1, 0, 0, 0), 20),})
+ 
 
 const files = [
   {
-    name: "bitcoin.pdf",
-    body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+    name: "RH Solutions - Développeur web",
+    list:[
+    {
+     content: "Maintenance et évolution ERP",
+    },
+    {
+      content: "Création système note de frais",
+     },
+     {
+      content: "Création système signature électronique",
+     },
+    
+   
+    ]
   },
   {
-    name: "finances.xlsx",
-    body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
+    name: "Ynov - Mastère Expert Informatique",
+    
+    list:[
+      {
+       content: "Cloud AWS et Azure",
+      },
+      {
+        content: "Intégration continue et déploiement continu",
+       },
+       {
+        content: "Architecture logiciel",
+       },
+      ]
   },
   {
-    name: "logo.svg",
-    body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
-  },
-  {
-    name: "keys.gpg",
-    body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
-  },
-  {
-    name: "seed.txt",
-    body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
-  },
+    name: "Ynov - Bachelor Technicien Informatique",
+    
+    list:[
+      {
+       content: "Conteneurisation Docker et Kubernetes",
+      },
+      {
+        content: "Base de donées NoSQL MongoDB",
+       },
+       {
+        content: "Développement web et mobile",
+       },
+      ]
+  }
 ];
 
 interface Item {
@@ -49,21 +81,21 @@ interface Item {
 const features = [
   {
     Icon: FileTextIcon,
-    name: "Experiences Professionnelles",
-    description: "Consultez mes experiences professionnelles.",
-    href: "/",
+    name: "Experiences",
+    description: "Consultez mes experiences ",
+    href: "/#experiences",
     cta: "CV / Experiences",
     className: "col-span-3 lg:col-span-1",
     background: (
       <Marquee
         pauseOnHover
-        className="absolute top-10 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] "
+        className="absolute top-10 [--duration:20s] [mask-image:linear-gradient(to_top,transparent_0%,#000_100%)] "
       >
         {files.map((f, idx) => (
           <figure
             key={idx}
             className={cn(
-              "relative w-32 cursor-pointer overflow-hidden rounded-xl border p-4",
+              "relative w-72 cursor-pointer overflow-hidden rounded-xl border p-4",
               "border-gray-950/[.1] bg-gray-950/[.01] hover:bg-gray-950/[.05]",
               "dark:border-gray-50/[.1] dark:bg-gray-50/[.10] dark:hover:bg-gray-50/[.15]",
               "transform-gpu blur-[1px] transition-all duration-300 ease-out hover:blur-none",
@@ -76,7 +108,15 @@ const features = [
                 </figcaption>
               </div>
             </div>
-            <blockquote className="mt-2 text-xs">{f.body}</blockquote>
+            <blockquote className="mt-2 text-xs">
+            <ul className="mt-2 text-xs">
+              {f.list.map((l, idx) => (
+                <li key={idx} className="flex items-center gap-1">
+                  <span className="text-gray-500 dark:text-gray-400">-</span>
+                  <span>{l.content}</span>
+                </li>
+              ))}
+            </ul></blockquote>
           </figure>
         ))}
       </Marquee>
@@ -91,16 +131,14 @@ const features = [
     className: "col-span-3 lg:col-span-2",
     background: (
     
-      <Command className="absolute right-10 top-10 w-[70%] translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:-translate-x-10">
+      <Command className="absolute right-10 top-10 w-[70%] translate-x-0 border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_0%,#000_100%)] group-hover:-translate-x-10">
         <CommandInput placeholder="Rechercher..." />
         <CommandList>
           <CommandEmpty>En Apprentissage</CommandEmpty>
             <CommandItem>PHP</CommandItem>
-            <CommandItem>REACTJS</CommandItem>
+            <CommandItem>ReactJS</CommandItem>
             <CommandItem>Docker</CommandItem>
-            <CommandItem>NodeJS</CommandItem>
             <CommandItem>NESTJS</CommandItem>
-            <CommandItem>React.JS</CommandItem>
             <CommandItem>CI/CD</CommandItem>
         </CommandList>
       </Command>
@@ -126,8 +164,10 @@ const features = [
     cta: "Contactez-moi",
     background: (
       <Calendar
-        mode="single"
-        selected={new Date(2024, 10, 1, 0, 0, 0)}
+        mode="range"
+        defaultMonth={date?.from}
+        locale={fr}
+        selected={ date}
         className="absolute right-0 top-10 origin-top rounded-md border transition-all duration-300 ease-out [mask-image:linear-gradient(to_top,transparent_40%,#000_100%)] group-hover:scale-105"
       />
     ),
@@ -138,7 +178,7 @@ export default function Grid() {
   useEffect(() => window.scrollTo(0, 0), []);
 
   return (
-    <BentoGrid2 className="px-8">
+    <BentoGrid2 className="px-16">
       {features.map((feature, idx) => (
         <BentoCard key={idx} {...feature} />
       ))}
