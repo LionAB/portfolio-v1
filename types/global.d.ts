@@ -8,9 +8,12 @@ declare global {
     }
     interface IExperience {
         id: number;
-        type: string;
+        type: 'work' | 'school',
         title: string;
+        structure?:string;
+        image?:string;
         description: string;
+        tasks:string[]
         year: string;
         tech: ITech[];
         

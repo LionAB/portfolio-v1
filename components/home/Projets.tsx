@@ -11,8 +11,8 @@ export default function Projets() {
         </h1>
         <div className="flex flex-wrap items-center justify-center p-4 gap-16 mt-10">
             {projets.map(({id,title,des,img,link,iconLists}) => (
-                <div>
-                <div key={ id} 
+                <div key={ id} >
+                <div 
                 className="lg:min-h[32.5rem] h-[25rem] flex items-center justify-center
                 sm:w-96 w-[80vw]" >
                     <PinContainer title={link} href={link}>
@@ -47,6 +47,7 @@ export default function Projets() {
 
                 </div></div>
             ))}
+            
         </div>
         </div>
     );

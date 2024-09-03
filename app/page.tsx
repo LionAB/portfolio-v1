@@ -7,6 +7,7 @@ import Grid from "@/components/Grid";
 import { useEffect } from "react";
 import { ArrowDown } from 'lucide-react';
 import Projets from "@/components/home/Projets";
+import { workExperience,schoolExperience } from "@/data/dataExperience";
 
 const Gradientdiv = dynamic(() => import('@/components/Gradientdiv'), { ssr: false });
 export default function Page({ children}: {
@@ -33,8 +34,10 @@ export default function Page({ children}: {
        
       </div>
       <section id="experiences" className="flex flex-col gap-10 ">
-        <h1 className="text-blue-500 text-2xl text-bold ">Mes Experiences</h1>
-        <TimeLine1/>
+        <h1 className="text-blue-800 text-2xl text-bold ">Experiences professionnelles</h1>
+        <TimeLine1 data={workExperience}/>
+        <h1 className="text-blue-800 text-2xl text-bold ">Education </h1>
+        <TimeLine1 data={schoolExperience}/>
       </section>
       <section id="projets">
         <Projets/>
