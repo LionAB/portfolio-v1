@@ -38,10 +38,10 @@ const TimeLine1: React.FC<TimeLine1Props> = ({ data }) => {
           ))}
           </ul>
           <div className="flex items-center">
-                            {experience.tech.map((tech) => (
-                                <span key={tech.id} className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">{tech.name}</span>
-                            ))}
-                        </div>
+              {experience.tech.map((tech) => (
+                  <span key={tech.id} className="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-blue-400 border border-blue-400">{tech.name}</span>
+              ))}
+          </div>
        </li>
     ))
     }

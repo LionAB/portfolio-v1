@@ -8,6 +8,7 @@ import { useEffect } from "react";
 import { ArrowDown } from 'lucide-react';
 import Projets from "@/components/home/Projets";
 import { workExperience,schoolExperience } from "@/data/dataExperience";
+import ContactForm from "@/components/main/contactForm";
 
 const Gradientdiv = dynamic(() => import('@/components/Gradientdiv'), { ssr: false });
 export default function Page({ children}: {
@@ -22,28 +23,27 @@ export default function Page({ children}: {
       <section id="intro" className="md:py-40 flex items-center justify-center">
        <HeroSection />
       </section>
-      <div className="h-10">
-        <div className="sm:hidden">
-        <span className="text-neutral-600 dark:text-neutral-200 text-base  mb-2">Voir plus</span>
-      <ArrowDown/> </div>
+      <div className="h-20">
+  
       </div>
       <section id="about" className="px-4 relative h-100 mx-auto">
         <Grid/>
       </section>
-      <div className="h-10">
+      <div className="h-20">
        
       </div>
       <section id="experiences" className="flex flex-col gap-10 ">
-        <h1 className="text-blue-800 text-2xl text-bold ">Experiences professionnelles</h1>
+        <h1 className="heading">Experiences {' '} <span className="text-blue-500">professionnelles</span></h1>
         <TimeLine1 data={workExperience}/>
-        <h1 className="text-blue-800 text-2xl text-bold ">Education </h1>
+        <h1 className="heading">Parcours {' '} <span className="text-blue-500">éducatif</span> </h1>
         <TimeLine1 data={schoolExperience}/>
       </section>
       <section id="projets">
         <Projets/>
       </section>
-      <section id="contact">
-        Contact Me
+      <section id="contact" className="flex flex-col gap-10">
+      <h1 className="heading">Me {' '} <span className="text-blue-500">contacter</span></h1>
+        <ContactForm/>
       </section>
     </div>
     </Gradientdiv>

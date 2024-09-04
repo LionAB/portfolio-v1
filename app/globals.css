@@ -76,6 +76,6 @@
       @apply bg-background text-foreground;
     }
     .heading{
-      @apply text-primary;
+      @apply font-bold text-4xl md:text-5xl text-center;
     }
   }

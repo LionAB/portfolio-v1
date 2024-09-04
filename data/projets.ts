@@ -1,4 +1,4 @@
-export const projets = [
+export const projets :IProjet[]= [
     {
         id: 1,
         title: "HistoriMap - Visualization des evenements historiques",

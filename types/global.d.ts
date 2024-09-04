@@ -18,4 +18,13 @@ declare global {
         tech: ITech[];
         
     }
+
+    interface IProjet {
+        id: number;
+        title: string;
+        des: string;
+        img: string;
+        iconLists: string[];
+        link: string;
+    }
 }
